@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
+const fs = require("fs");
 
-const conventionalCommitMessageRegExp = /^(ASTONJS-1){1}\s{1}\[{1}(feat|fix|chore){1}\]{1}\:\s/g;
+const conventionalCommitMessageRegExp =
+  /^(ASTONJS-(\d+)){1}\s{1}\[{1}(feat|fix|chore){1}\]{1}\:\s/g;
 let exitCode = 0;
 const commitMsgFile = process.argv[2];
-const message = fs.readFileSync(commitMsgFile, 'utf8');
+const message = fs.readFileSync(commitMsgFile, "utf8");
 const isValid = conventionalCommitMessageRegExp.test(message);
 
-
-
-if(!isValid) {
-   console.log('Cannot commit: the commit message does not comply with conventional commits standards. Pattern: ASTONJS-1 [feat/fix/chore]: commit msg');
-   exitCode = 1;
+if (!isValid) {
+  console.log(
+    "Cannot commit: the commit message does not comply with conventional commits standards. Pattern: ASTONJS-1 [feat/fix/chore]: commit msg"
+  );
+  exitCode = 1;
 }
 
 process.exit(exitCode);
