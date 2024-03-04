@@ -2,7 +2,7 @@
 
 function showIndex(arr, delta = 3000) {
   arr.forEach((item, i) => {
-    setTimeout(() => console.log(i), delta * i);
+    setTimeout(() => console.log(i), delta * (i + 1));
   });
 }
 
